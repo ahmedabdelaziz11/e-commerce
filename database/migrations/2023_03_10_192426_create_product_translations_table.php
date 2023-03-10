@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('product_translations', function (Blueprint $table) {
             $table->id();
             $table->string('locale')->index();
-            $table->unsignedBigInteger('prodcut_id');
-            $table->unique(['prodcut_id', 'locale']);
-            $table->foreign('prodcut_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('Product_id');
+            $table->unique(['Product_id', 'locale']);
+            $table->foreign('Product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('name');
             $table->longText('description');
         });

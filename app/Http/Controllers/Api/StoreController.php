@@ -21,7 +21,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $stores = Store::paginate(10);
+        $stores = Store::with('user')->paginate(10);
 
         return $this->apiResponse(
             StoreResource::collection($stores)->response()->getData(true),
@@ -48,7 +48,7 @@ class StoreController extends Controller
         } catch(\Exception $e){
             return $this->apiResponse(null,'the store not save',Response::HTTP_BAD_REQUEST);
         }
-        return $this->apiResponse(new StoreResource($store),'store saved',Response::HTTP_CREATED);
+        return $this->apiResponse(new StoreResource($store->load('user')),'store saved',Response::HTTP_CREATED);
     }
 
     /**
@@ -58,7 +58,7 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::find($id);
+        $store = Store::with('user')->find($id);
 
         if($store)
         {
@@ -76,7 +76,7 @@ class StoreController extends Controller
      */
     public function update(StoreRequest $request, $id)
     {
-        $store = Store::find($id);
+        $store = Store::with('user')->find($id);
 
         try{
             $store->update([

@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Traits\Api\ApiResponseTrait;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Traits\Api\ApiResponseTrait;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     use ApiResponseTrait;
     /**
@@ -28,8 +28,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'VAT' => 'numeric|between:0,100',
-            'shipping_cost' => 'numeric|between:0,99999999.99',
+            'description' => 'required|string|between:5,600',
+            'price' => 'required|numeric|between:0,99999999.99',
+            'store_id' => 'required|exists:stores,id',
         ];
     }
 
