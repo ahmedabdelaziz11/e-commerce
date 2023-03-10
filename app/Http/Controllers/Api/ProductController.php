@@ -8,7 +8,6 @@ use App\Http\Resources\ProductResource;
 use App\Http\Traits\Api\ApiResponseTrait;
 use App\Models\Product;
 use App\Models\ProductTranslation;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
@@ -43,6 +42,7 @@ class ProductController extends Controller
             $product_data = [
                 'price' => $request->price,
                 'store_id' => $request->store_id,
+                'is_included_vat' => $request->is_included_vat,
                 $request->locale  => [
                     'name'        => $request->name,
                     'description' => $request->description
@@ -86,6 +86,7 @@ class ProductController extends Controller
             $product_data = [
                 'price' => $request->price,
                 'store_id' => $request->store_id,
+                'is_included_vat' => $request->is_included_vat,
                 $request->locale  => [
                     'name'        => $request->name,
                     'description' => $request->description

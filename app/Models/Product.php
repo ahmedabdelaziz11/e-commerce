@@ -19,7 +19,8 @@ class Product extends Model implements TranslatableContract
         'price',
         'store_id',
         'name',
-        'description'
+        'description',
+        'is_included_vat'
     ];
 
 

@@ -19,6 +19,7 @@ class ProductResource extends JsonResource
             'Name' => $this->name,
             'Description' => $this->description,
             'Price' => $this->price,
+            'VAT' => $this->is_included_vat ? 'included VAT' : 'not inclided VAT',
             'Store' => new StoreResource($this->whenLoaded('store')),
             'storeOwner' => new UserResource($this->whenLoaded('storeOwner')),
         ];

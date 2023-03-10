@@ -30,6 +30,7 @@ class ProductRequest extends FormRequest
             'name' => 'required|max:255',
             'description' => 'required|string|between:5,600',
             'price' => 'required|numeric|between:0,99999999.99',
+            'is_included_vat' => 'boolean',
             'store_id' => 'required|exists:stores,id',
         ];
     }
