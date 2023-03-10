@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\StoreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
 
 Route::middleware(['jwt.verify'])->group(function () {
 
-
+    Route::get('stores',[StoreController::class,'index']);
+    Route::get('store/{id}',[StoreController::class,'show']);
+    Route::post('stores',[StoreController::class,'store']);
+    Route::post('stores/{id}',[StoreController::class,'update'])->middleware('store.owner');
+    Route::post('store/{id}',[StoreController::class,'destroy'])->middleware('store.owner');
 
 });
