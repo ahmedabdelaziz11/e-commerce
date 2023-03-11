@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
         'store.owner' => \App\Http\Middleware\StoreOwnerMiddleware::class,
         'product.owner' => \App\Http\Middleware\ProductOwnerMiddleware::class,
+        'cart.owner' => \App\Http\Middleware\CartOwnerMiddleware::class,
     ];
 }

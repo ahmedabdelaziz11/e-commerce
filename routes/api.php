@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StoreController;
 use Illuminate\Http\Request;
@@ -39,5 +40,12 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('products',[ProductController::class,'store']);
     Route::post('products/{id}',[ProductController::class,'update'])->middleware('product.owner');
     Route::post('product/{id}',[ProductController::class,'destroy'])->middleware('product.owner');
+
+
+    Route::get('carts',[CartController::class,'index']);
+    Route::get('cart/{id}',[CartController::class,'show']);
+    Route::post('carts',[CartController::class,'store']);
+    Route::post('carts/{id}',[CartController::class,'update'])->middleware('cart.owner');
+    Route::post('cart/{id}',[CartController::class,'destroy'])->middleware('cart.owner');
 
 });
