@@ -20,7 +20,7 @@ class CartResource extends JsonResource
             'shipping_cost' => $this->shipping_cost,
             'vat_value' => $this->vat_value,
             'cartOwner' => new UserResource($this->whenLoaded('user')),
-            'products' => $this->products,
+            'products' => CartProductResource::collection($this->whenLoaded('products')),
         ];
     }
 }
